@@ -198,4 +198,5 @@ if __name__ == "__main__":
     # On calcul le profit de chaque action
     actions = calcul_profit(actions)
     # On créer les portefeuilles d'actions
-    create_portefeuille_actions(actions)
+    result = create_portefeuille_actions(actions)
+    print(result)
