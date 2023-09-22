@@ -9,14 +9,20 @@ def read_csv(file_path):
     return data
 
 def calcul_profit(actions):
-    # On calcule le profit de chaque action
+    actions_avec_profit = []
     for action in actions:
-        # Modifier le prix en float
-        action["price"] = float(action["price"])
-        # On calcule le profit en multipliant le prix par le pourcentage de profit
-        action["profit"] = float(action["price"]) * float(action["profit"]) / 100
-    return actions
+        price = float(action["price"])
+        profit = float(action["price"]) * float(action["profit"]) / 100
+        if price > 0 or profit > 0:
+            actions_avec_profit.append({
+                "name": action["name"],
+                "price": price,
+                "profit": profit
+            })
+    return actions_avec_profit
 
+
+    return actions_avec_profit
 # def knapsack(budget, actions, n):
 #     # Initialisation de la matrice
 #     matrice = [[0 for x in range(budget + 1)] for x in range(n + 1)]
@@ -72,125 +78,125 @@ def knapsack(capacity: float, weights: list[float], values: list[float], counter
 
 if __name__ == "__main__":
     budget = 500
-    # data = [
-    #     {
-    #         "name": "action1",
-    #         "price": 20,
-    #         "profit": 5
-    #     },
-    #     {
-    #         "name": "action2",
-    #         "price": 30,
-    #         "profit": 10
-    #     },
-    #     {
-    #         "name": "action3",
-    #         "price": 50,
-    #         "profit": 15
-    #     },
-    #     {
-    #         "name": "action4",
-    #         "price": 70,
-    #         "profit": 20
-    #     },
-    #     {
-    #         "name": "action5",
-    #         "price": 60,
-    #         "profit": 17
-    #     },
-    #     {
-    #         "name": "action6",
-    #         "price": 80,
-    #         "profit": 25
-    #     },
-    #     {
-    #         "name": "action7",
-    #         "price": 22,
-    #         "profit": 7
-    #     },
-    #     {
-    #         "name": "action8",
-    #         "price": 26,
-    #         "profit": 11
-    #     },
-    #     {
-    #         "name": "action9",
-    #         "price": 48,
-    #         "profit": 13
-    #     },
-    #     {
-    #         "name": "action10",
-    #         "price": 34,
-    #         "profit": 27
-    #     },
-    #     {
-    #         "name": "action11",
-    #         "price": 42,
-    #         "profit": 17
-    #     },
-    #     {
-    #         "name": "action12",
-    #         "price": 110,
-    #         "profit": 9
-    #     },
-    #     {
-    #         "name": "action13",
-    #         "price": 38,
-    #         "profit": 23
-    #     },
-    #     {
-    #         "name": "action14",
-    #         "price": 14,
-    #         "profit": 1
-    #     },
-    #     {
-    #         "name": "action15",
-    #         "price": 18,
-    #         "profit": 3
-    #     },
-    #     {
-    #         "name": "action16",
-    #         "price": 8,
-    #         "profit": 8
-    #     },
-    #     {
-    #         "name": "action17",
-    #         "price": 4,
-    #         "profit": 12
-    #     },
-    #     {
-    #         "name": "action18",
-    #         "price": 10,
-    #         "profit": 14
-    #     },
-    #     {
-    #         "name": "action19",
-    #         "price": 24,
-    #         "profit": 21
-    #     },
-    #     {
-    #         "name": "action20",
-    #         "price": 114,
-    #         "profit": 18
-    #     },
-    # ]
+    data = [
+        {
+            "name": "action1",
+            "price": 20,
+            "profit": 5
+        },
+        {
+            "name": "action2",
+            "price": 30,
+            "profit": 10
+        },
+        {
+            "name": "action3",
+            "price": 50,
+            "profit": 15
+        },
+        {
+            "name": "action4",
+            "price": 70,
+            "profit": 20
+        },
+        {
+            "name": "action5",
+            "price": 60,
+            "profit": 17
+        },
+        {
+            "name": "action6",
+            "price": 80,
+            "profit": 25
+        },
+        {
+            "name": "action7",
+            "price": 22,
+            "profit": 7
+        },
+        {
+            "name": "action8",
+            "price": 26,
+            "profit": 11
+        },
+        {
+            "name": "action9",
+            "price": 48,
+            "profit": 13
+        },
+        {
+            "name": "action10",
+            "price": 34,
+            "profit": 27
+        },
+        {
+            "name": "action11",
+            "price": 42,
+            "profit": 17
+        },
+        {
+            "name": "action12",
+            "price": 110,
+            "profit": 9
+        },
+        {
+            "name": "action13",
+            "price": 38,
+            "profit": 23
+        },
+        {
+            "name": "action14",
+            "price": 14,
+            "profit": 1
+        },
+        {
+            "name": "action15",
+            "price": 18,
+            "profit": 3
+        },
+        {
+            "name": "action16",
+            "price": 8,
+            "profit": 8
+        },
+        {
+            "name": "action17",
+            "price": 4,
+            "profit": 12
+        },
+        {
+            "name": "action18",
+            "price": 10,
+            "profit": 14
+        },
+        {
+            "name": "action19",
+            "price": 24,
+            "profit": 21
+        },
+        {
+            "name": "action20",
+            "price": 114,
+            "profit": 18
+        },
+    ]
 
-    data = read_csv("dataset1_PythonP7.csv")
+    # read_csv("dataset1_PythonP7.csv")
+    data2 = read_csv("dataset1_PythonP7.csv")
 
-    actions = calcul_profit(data) # Exemple : [ { "name": "action1", "price": 250, "profit": 0.5 }, ... 
-    # actions = actions[1::]
+    actions = calcul_profit(data2) # Exemple : [ { "name": "action1", "price": 250, "profit": 0.5 }, ... 
+    # print(actions)
     list_price = []
     list_profit = []
-    i = 0
+    i = len(actions)
     for action in actions:
-        if action["price"] == 0:
-            i += 1
-            continue
         list_price.append(action["price"]) # poids
         list_profit.append(action["profit"]) # valeur
-    lenaction = len(actions) - i
-    print(lenaction)
-    print(len(list_profit))
-    print(len(list_price))
-    result = knapsack(budget, list_price, list_profit, lenaction)
-    # print(result)
+
+    print(i)
+    print(list_profit)
+    print(list_price)
+    # Fractionné l'execution du code knapsack
+    
+    result = knapsack(budget, list_price, list_profit, i)
+    print(result)
