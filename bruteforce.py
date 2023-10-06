@@ -187,10 +187,6 @@ def save_portefeuille_actions(portefeuille_actions, portefeuille_name):
         for portefeuille in portefeuille_actions:
             writer.writerow([portefeuille["name_portefeuille"], portefeuille["actions"], portefeuille["profit_total"]])
 
-# Definir la notation big O 
-# O(n^2) car on a une boucle imbriquée 
-
-
 # Eexecute la fonctio
 if __name__ == "__main__":
     # Definir la notation big O 

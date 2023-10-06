@@ -13,33 +13,14 @@ def calcul_profit(actions):
     for action in actions:
         price = float(action["price"])
         profit = float(action["price"]) * float(action["profit"]) / 100
-        if price > 0 or profit > 0:
-            actions_avec_profit.append({
-                "name": action["name"],
-                "price": price,
-                "profit": profit
-            })
+        # Si le prix ou le profit est supérieur et négatif ou inferieur a 0 alors on ajoute
+
+        if price > 0 and profit > 0:
+            actions_avec_profit.append({"name": action["name"], "price": price, "profit": profit})
+            # print(price, profit)
+    
+    print(actions_avec_profit)
     return actions_avec_profit
-
-
-    return actions_avec_profit
-# def knapsack(budget, actions, n):
-#     # Initialisation de la matrice
-#     matrice = [[0 for x in range(budget + 1)] for x in range(n + 1)]
- 
-#     # On remplit la matrice
-#     for i in range(n + 1):
-#         for j in range(budget + 1):
-#             if i == 0 or j == 0:
-#                 matrice[i][j] = 0
-#             elif actions[i-1][0] <= j:
-#                 matrice[i][j] = max(actions[i-1][1] + matrice[i-1][j-actions[i-1][0]],  matrice[i-1][j])
-#             else:
-#                 matrice[i][j] = matrice[i-1][j]
- 
-#     return matrice[n][budget]
-
-# Official
 
 def knapsack(capacity: float, weights: list[float], values: list[float], counter: float) -> float:
     """
@@ -78,125 +59,136 @@ def knapsack(capacity: float, weights: list[float], values: list[float], counter
 
 if __name__ == "__main__":
     budget = 500
-    data = [
-        {
-            "name": "action1",
-            "price": 20,
-            "profit": 5
-        },
-        {
-            "name": "action2",
-            "price": 30,
-            "profit": 10
-        },
-        {
-            "name": "action3",
-            "price": 50,
-            "profit": 15
-        },
-        {
-            "name": "action4",
-            "price": 70,
-            "profit": 20
-        },
-        {
-            "name": "action5",
-            "price": 60,
-            "profit": 17
-        },
-        {
-            "name": "action6",
-            "price": 80,
-            "profit": 25
-        },
-        {
-            "name": "action7",
-            "price": 22,
-            "profit": 7
-        },
-        {
-            "name": "action8",
-            "price": 26,
-            "profit": 11
-        },
-        {
-            "name": "action9",
-            "price": 48,
-            "profit": 13
-        },
-        {
-            "name": "action10",
-            "price": 34,
-            "profit": 27
-        },
-        {
-            "name": "action11",
-            "price": 42,
-            "profit": 17
-        },
-        {
-            "name": "action12",
-            "price": 110,
-            "profit": 9
-        },
-        {
-            "name": "action13",
-            "price": 38,
-            "profit": 23
-        },
-        {
-            "name": "action14",
-            "price": 14,
-            "profit": 1
-        },
-        {
-            "name": "action15",
-            "price": 18,
-            "profit": 3
-        },
-        {
-            "name": "action16",
-            "price": 8,
-            "profit": 8
-        },
-        {
-            "name": "action17",
-            "price": 4,
-            "profit": 12
-        },
-        {
-            "name": "action18",
-            "price": 10,
-            "profit": 14
-        },
-        {
-            "name": "action19",
-            "price": 24,
-            "profit": 21
-        },
-        {
-            "name": "action20",
-            "price": 114,
-            "profit": 18
-        },
-    ]
+    # data = [
+    #     {
+    #         "name": "action1",
+    #         "price": 20,
+    #         "profit": 5
+    #     },
+    #     {
+    #         "name": "action2",
+    #         "price": 30,
+    #         "profit": 10
+    #     },
+    #     {
+    #         "name": "action3",
+    #         "price": 50,
+    #         "profit": 15
+    #     },
+    #     {
+    #         "name": "action4",
+    #         "price": 70,
+    #         "profit": 20
+    #     },
+    #     {
+    #         "name": "action5",
+    #         "price": 60,
+    #         "profit": 17
+    #     },
+    #     {
+    #         "name": "action6",
+    #         "price": 80,
+    #         "profit": 25
+    #     },
+    #     {
+    #         "name": "action7",
+    #         "price": 22,
+    #         "profit": 7
+    #     },
+    #     {
+    #         "name": "action8",
+    #         "price": 26,
+    #         "profit": 11
+    #     },
+    #     {
+    #         "name": "action9",
+    #         "price": 48,
+    #         "profit": 13
+    #     },
+    #     {
+    #         "name": "action10",
+    #         "price": 34,
+    #         "profit": 27
+    #     },
+    #     {
+    #         "name": "action11",
+    #         "price": 42,
+    #         "profit": 17
+    #     },
+    #     {
+    #         "name": "action12",
+    #         "price": 110,
+    #         "profit": 9
+    #     },
+    #     {
+    #         "name": "action13",
+    #         "price": 38,
+    #         "profit": 23
+    #     },
+    #     {
+    #         "name": "action14",
+    #         "price": 14,
+    #         "profit": 1
+    #     },
+    #     {
+    #         "name": "action15",
+    #         "price": 18,
+    #         "profit": 3
+    #     },
+    #     {
+    #         "name": "action16",
+    #         "price": 8,
+    #         "profit": 8
+    #     },
+    #     {
+    #         "name": "action17",
+    #         "price": 4,
+    #         "profit": 12
+    #     },
+    #     {
+    #         "name": "action18",
+    #         "price": 10,
+    #         "profit": 14
+    #     },
+    #     {
+    #         "name": "action19",
+    #         "price": 24,
+    #         "profit": 21
+    #     },
+    #     {
+    #         "name": "action20",
+    #         "price": 114,
+    #         "profit": 18
+    #     },
+    # ]
 
-    # read_csv("dataset1_PythonP7.csv")
-    data2 = read_csv("dataset1_PythonP7.csv")
+    # Lire le fichier CSV
+    data = read_csv("dataset1_PythonP7.csv")
 
-    actions = calcul_profit(data2) # Exemple : [ { "name": "action1", "price": 250, "profit": 0.5 }, ... 
-    # print(actions)
+    # Calculer le profit des actions
+    actions = calcul_profit(data) # Exemple : [ { "name": "action1", "price": 250, "profit": 0.5 }, ...
+
+    print(len(data))
+    # Initialiser les listes pour le prix et le profit
     list_price = []
     list_profit = []
-    i = len(actions)
+
+    # Compteur pour les actions avec un prix de 0
+    # Parcourir les actions
     for action in actions:
+        # Vérifier si le prix de l'action est égal à 0
+        
+        # Ajouter le prix de l'action à la liste des prix
         list_price.append(action["price"]) # poids
+        
+        # Ajouter le profit de l'action à la liste des profits
         list_profit.append(action["profit"]) # valeur
 
-    print(i)
-    print(list_profit)
-    print(list_price)
-    # Fractionné l'execution du code knapsack
-    
-    result = knapsack(budget, list_price, list_profit, i)
+    # Calculer la longueur des actions sans les actions avec un prix de 0
+    lenaction = len(actions)
+    print(lenaction)
+    # Utiliser l'algorithme du sac à dos pour trouver la solution optimale
+    result = knapsack(budget, list_price, list_profit, lenaction)
+
+    # Afficher le résultat
     print(result)
