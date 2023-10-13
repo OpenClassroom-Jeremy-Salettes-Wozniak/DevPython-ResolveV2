@@ -190,9 +190,12 @@ def save_portefeuille_actions(portefeuille_actions, portefeuille_name):
 # Eexecute la fonctio
 if __name__ == "__main__":
     # Definir la notation big O 
+    # une complexité algorithmique exponentielle en fonction du nombre d'actions disponibles. 
+    # Plus précisément, la complexité est de l'ordre de O(2^n), où "n" est le nombre total d'actions.
     
     # On calcul le profit de chaque action
     actions = calcul_profit(actions)
     # On créer les portefeuilles d'actions
     result = create_portefeuille_actions(actions)
     print(result)
+    
